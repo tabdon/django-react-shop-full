@@ -1,0 +1,65 @@
+[
+{
+    "fields": {
+        "price": "699.99",
+        "mfg": "Burton",
+        "name": "Custom Flying V Snowboard",
+        "image": "http://images.evo.com/imgp/1500/68661/335545/burton-custom-flying-v-snowboard-2014-148.jpg",
+        "desc": "Since its humble beginnings, innovation has defined the Burton Custom series and set it apart as the most popular, versatile, and mimicked board in snowboarding. These days, the one-board answer to all terrain adds exclusive ingredients like Carbon Highlights and Squeezebox core profiling to the mix for drastic weight-savings, crisper pop and, and deluxe handling to pilot through the mountain\u2019s mixed bag. The precision and stability of camber is the top choice for pros like Mikkel Bang, while Flying V\u2122 combines camber\u2019s power with the relaxed float of rocker for the best of both worlds."
+    },
+    "model": "core.product",
+    "pk": 1
+},
+{
+    "fields": {
+        "price": "220",
+        "mfg": "Westbeach",
+        "name": "METHOD JACKET",
+        "image": "http://uploads.westbeach.com/store/1297/1094_1039_01.jpg",
+        "desc": "Classic fit, Insulated, 5k/5k fabric tech, Critically seam sealed, Fixed powder skirt, Goggle pocket YKK VislonTM zip to centre front."
+    },
+    "model": "core.product",
+    "pk": 2
+},
+{
+    "fields": {
+        "price": "149",
+        "mfg": "Marc Jacobs",
+        "name": "Dancing Shoes",
+        "image": "http://i1.adis.ws/i/Marc_Jacobs/C4000596_001_MAIN?$tablet$",
+        "desc": "This is a pair of dancing shoes by Marc Jacobs. They are made of leather and have a metallic shine. Michael Jackson would've loved these shoes."
+    },
+    "model": "core.product",
+    "pk": 3
+},
+{
+    "fields": {
+        "comment": "I use this snowboard all the time. Great stuff. ",
+        "rating": 3,
+        "product": 1,
+        "full_name": "John Smith"
+    },
+    "model": "core.review",
+    "pk": 1
+},
+{
+    "fields": {
+        "comment": "Keeps me very warm.",
+        "rating": 5,
+        "product": 2,
+        "full_name": "Tammy"
+    },
+    "model": "core.review",
+    "pk": 2
+},
+{
+    "fields": {
+        "comment": "Ok, at best. ",
+        "rating": 3,
+        "product": 3,
+        "full_name": "Tony H."
+    },
+    "model": "core.review",
+    "pk": 3
+}
+]

@@ -1,0 +1,8 @@
+.vagrant
+*.pyc
+venv/*
+staticfiles
+db.sqlite3
+.idea
+/templates
+assets

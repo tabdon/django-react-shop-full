@@ -1,0 +1,10 @@
+.product h1 {
+  margin-top: 0;
+}
+.product .mfg {
+  color: #aaa;
+  font-weight: normal;
+}
+.product .description {
+  margin: 10px 1px;
+}

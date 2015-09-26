@@ -1,0 +1,17 @@
+.reviews {
+  margin-top: 40px;
+}
+.reviews a {
+  display: block;
+  margin-bottom: 30px;
+}
+.reviews h2 {
+  margin: 25px 0;
+}
+.reviews .review .name {
+  font-size: 20px;
+  padding: 8px 0 5px 0;
+}
+.reviews .review .comment {
+  padding-top: 12px;
+}
