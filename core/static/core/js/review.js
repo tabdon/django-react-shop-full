@@ -137,13 +137,39 @@ var ReviewSection = React.createClass({
     },
 
     // createReview method
+    createReview: function(nReview) {
+        nReview.product = this.props.productId;
+        var api = new APIService();
+
+        api.createProductReview(nReview, function(data) {
+            var initialArray = this.state.reviews;
+
+            var newReviews = [nReview].concat(initialArray);
+
+            this.setState({reviews: []}, function(){
+                this.setState({reviews: newReviews});
+
+                $('.review-form').hide();
+                $('.review-form :input').val('');
+                $('.review-form .rating').rating('clear');
+                $('a.showForm').show();
+            });
+        }.bind(this));
+    },
 
     // showReviewForm method
+    showReviewForm: function(e) {
+        e.preventDefault();
+        $('.review-form').show();
+        $(e.target).hide();
+    },
 
     render: function() {
         return (
             <section className="col-md-8 reviews">
                 <h2>Product Reviews</h2>
+                <a className="showForm" href="#" onClick={this.showReviewForm}>Bought the product? Leave a review</a>
+                <ReviewForm productId={this.props.productId} submitForm={this.createReview} />
                 <ReviewList data={this.state.reviews} />
             </section>
         )
