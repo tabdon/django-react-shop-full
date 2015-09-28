@@ -27,6 +27,11 @@ APIService.prototype.getProductReviews = function(product_id, callback) {
     self.request(self._urls.productReviews.format({'product_id': product_id}), null, null, callback);
 };
 
+APIService.prototype.createProductReview = function(review, callback) {
+    var self = this;
+    self.request(self._urls.productReview, 'POST', review, callback);
+};
+
 APIService.prototype.request = function(url, type, data, successCallback, errorCallback) {
     $.ajax({
         url: url,
