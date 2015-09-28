@@ -3,7 +3,8 @@ function APIService() {
         productList: '/api/product/',
         productDetail: '/api/product/:product_id/',
         productReviews: '/api/product/:product_id/reviews/',
-        productReview: '/api/review/'
+        productReview: '/api/review/',
+        order: '/api/order/'
     };
 }
 
@@ -30,6 +31,52 @@ APIService.prototype.getProductReviews = function(product_id, callback) {
 APIService.prototype.createProductReview = function(review, callback) {
     var self = this;
     self.request(self._urls.productReview, 'POST', review, callback);
+};
+
+APIService.prototype.makePayment = function(product, formData, successCallback, failureCallback) {
+    var self = this;
+
+    // Error handler
+    var generateErrorText = function(errorData) {
+        var text = '';
+        if (errorData.detail) {
+            text = errorData.detail;
+        } else {
+            for (var x in errorData) {
+                text += errorData[x] + ' ';
+            }
+        }
+        return text;
+    };
+
+    // Create a Stripe token
+    Stripe.createToken({
+        number: formData.card,
+        cvc: formData.cvc,
+        exp_month: formData.expiry.month,
+        exp_year: formData.expiry.year
+    },
+
+    // Submit to Order API
+    function (status, response) {
+        if (response.error) {
+            failureCallback(response.error.message);
+        } else {
+            var order = {
+                product: product.product_id,
+                full_name: formData.name,
+                email: formData.email,
+                stripe_id: response.id
+            };
+
+            self.request(self._urls.order, 'POST', order, function(data) {
+                successCallback(data);
+            }, function(jqxhr, status, errorThrown) {
+                failureCallback(generateErrorText(jqxhr.responseJSON));
+            });
+        }
+    });
+
 };
 
 APIService.prototype.request = function(url, type, data, successCallback, errorCallback) {
