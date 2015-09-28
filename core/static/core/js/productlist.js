@@ -22,6 +22,17 @@ var ProductList = React.createClass({
     },
 
     // paginateProducts method
+    paginateProducts: function(e) {
+        e.preventDefault();
+        var target = jQuery(e.target);
+        var paginationData = target.data('page-url');
+        if (paginationData) {
+            this.api.getPagedProducts(paginationData, function(data) {
+                this.setState({data: data});
+            }.bind(this));
+        }
+
+    },
 
     // render method
     render: function() {
@@ -45,6 +56,10 @@ var ProductList = React.createClass({
 
         return (
             <div>
+                <div className="pagination">
+                    <button className={this.state.data.links.prev ? 'prev' : 'hide'} data-page-url={this.state.data.links.prev} onClick={this.paginateProducts}>Prev</button>
+                    <button className={this.state.data.links.next ? 'next pull-right' : 'hide'} data-page-url={this.state.data.links.next} onClick={this.paginateProducts}>Next</button>
+                </div>
                 {columns}
             </div>
         );

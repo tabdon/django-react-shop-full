@@ -9,6 +9,11 @@ APIService.prototype.getProducts = function(callback) {
     this.request(self._urls.productList, null, null, callback);
 };
 
+APIService.prototype.getPagedProducts = function(paginationUrl, callback) {
+    var self = this;
+    this.request(self._urls.productList, null, paginationUrl.parseUrl().params, callback);
+};
+
 APIService.prototype.request = function(url, type, data, successCallback, errorCallback) {
     $.ajax({
         url: url,
