@@ -13,6 +13,10 @@ var ProductDetail = React.createClass({
     },
 
     // renderModal method
+    renderModal: function(e) {
+        e.preventDefault();
+        React.render(<PaymentModal product={this.state} />, document.querySelector('#payment-modal .modal-content'))
+    },
 
     // render method
     render: function() {

@@ -179,3 +179,28 @@ var PaymentForm = React.createClass({
     }
 
 });
+
+var PaymentModal = React.createClass({
+    componentDidMount: function() {
+        this.modal = $(this.getDOMNode()).parents('.modal');
+        this.modal.modal('show');
+    },
+    closeModal: function(e) {
+        e.preventDefault();
+        this.modal.modal('hide');
+    },
+    render: function() {
+        return (<div>
+            <div className="modal-header">
+                    <h3 className="modal-title">Purchase {this.props.product.name}</h3>
+                </div>
+                <div className="modal-body clearfix">
+                    <PaymentForm product={this.props.product} />
+                </div>
+                <div className="modal-footer">
+                    <button className="btn btn-warning" onClick={this.closeModal}>Cancel</button>
+                </div>
+            </div>
+        )
+    }
+});
