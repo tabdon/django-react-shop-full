@@ -6,6 +6,12 @@ var routes = {
           <ProductList columns="2" />,
             container
         );
+    },
+    '/p/:productId': function(productId) {
+        React.render(
+            <ProductDetail productId={productId} />,
+            container
+        )
     }
 };
 
