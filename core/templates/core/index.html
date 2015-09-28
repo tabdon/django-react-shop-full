@@ -68,5 +68,8 @@
     <script type="text/jsx" src="{% static 'core/js/app.js' %}"></script>
 
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script>
+        Stripe.setPublishableKey('{{ stripe_publishable_key }}');
+    </script>
   </body>
 </html>

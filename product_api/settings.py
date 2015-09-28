@@ -89,3 +89,6 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_SERIALIZER_CLASS':
         'api.pagination.CustomPaginationSerializer',
 }
+
+STRIPE_SECRET_KEY = '<add your key here>'
+STRIPE_PUBLISHABLE_KEY = '<add your key here>'
