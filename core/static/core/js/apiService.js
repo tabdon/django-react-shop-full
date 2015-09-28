@@ -1,7 +1,9 @@
 function APIService() {
     this._urls = {
         productList: '/api/product/',
-        productDetail: '/api/product/:product_id/'
+        productDetail: '/api/product/:product_id/',
+        productReviews: '/api/product/:product_id/reviews/',
+        productReview: '/api/review/'
     };
 }
 
@@ -18,6 +20,11 @@ APIService.prototype.getPagedProducts = function(paginationUrl, callback) {
 APIService.prototype.getProduct = function(product_id, callback) {
     var self = this;
     self.request(self._urls.productDetail.format({'product_id': product_id}), null, null, callback);
+};
+
+APIService.prototype.getProductReviews = function(product_id, callback) {
+    var self = this;
+    self.request(self._urls.productReviews.format({'product_id': product_id}), null, null, callback);
 };
 
 APIService.prototype.request = function(url, type, data, successCallback, errorCallback) {
