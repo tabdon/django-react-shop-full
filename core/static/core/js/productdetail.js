@@ -27,6 +27,7 @@ var ProductDetail = React.createClass({
                     <div className="description">{this.state.desc}</div>
                     <button type="button" className="btn btn-primary" onClick={this.renderModal}>Buy Now ${this.state.price}</button>
                 </div>
+                <ReviewSection productId={this.state.product_id} />
             </article>
         )
     }
